@@ -1,7 +1,8 @@
 import { makeBadge } from 'badge-maker';
 import { HttpService, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 
-type BadgeSettings = {
+export type BadgeSettings = {
   label?: string;
   color?: string;
   style?: 'plastic' | 'flat' | 'flat-square' | 'for-the-badge' | 'social';
@@ -9,19 +10,19 @@ type BadgeSettings = {
 
 @Injectable()
 export class RepositoriesService {
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService,
+    private readonly configService: ConfigService,
+  ) {}
 
   async getNpmPackageLatestVersion(packageName: string) {
+    const serverUrl = this.configService.get('NEXUS_SERVER_URL');
+
     const defaultVersion = 'not found';
 
-    const authorization = `Basic ${Buffer.from('npmuser:npmuser').toString(
-      'base64',
-    )}`; // TODO: read from environment variable
-
     const response = await this.httpService
-      // TODO: read from environment variable
-      .get(`http://localhost:8081/repository/npm-private/${packageName}`, {
-        headers: { authorization },
+      .get(`${serverUrl}/repository/npm-private/${packageName}`, {
+        headers: this.getHeaders(),
       })
       .toPromise()
       .then(({ data }) => data)
@@ -67,5 +68,22 @@ export class RepositoriesService {
     });
 
     return svg;
+  }
+
+  getHeaders() {
+    const userName = this.configService.get('NEXUS_USER_NAME');
+    const userPass = this.configService.get('NEXUS_USER_PASS');
+
+    if (userName && userPass) {
+      const authorization = `Basic ${Buffer.from(
+        `${userName}:${userPass}`,
+      ).toString('base64')}`;
+
+      return {
+        authorization,
+      };
+    }
+
+    return {};
   }
 }

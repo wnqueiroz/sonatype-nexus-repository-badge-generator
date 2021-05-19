@@ -1,5 +1,5 @@
 import { Controller, Get, Header, Param, Query } from '@nestjs/common';
-import { RepositoriesService } from './repositories.service';
+import { BadgeSettings, RepositoriesService } from './repositories.service';
 
 @Controller('/repositories')
 export class RepositoriesController {
@@ -9,7 +9,7 @@ export class RepositoriesController {
   @Header('content-type', 'image/svg+xml;charset=utf-8')
   getNpmPackageBadge(
     @Param('packageName') packageName: string,
-    @Query() query: any, // TODO: add type for this
+    @Query() query: BadgeSettings,
   ) {
     const { label, style, color } = query;
 
