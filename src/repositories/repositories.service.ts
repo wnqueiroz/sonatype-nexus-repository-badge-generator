@@ -1,6 +1,12 @@
 import { makeBadge } from 'badge-maker';
 import { HttpService, Injectable } from '@nestjs/common';
 
+type BadgeSettings = {
+  label?: string;
+  color?: string;
+  style?: 'plastic' | 'flat' | 'flat-square' | 'for-the-badge' | 'social';
+};
+
 @Injectable()
 export class RepositoriesService {
   constructor(private httpService: HttpService) {}
@@ -34,15 +40,30 @@ export class RepositoriesService {
     return latest || defaultVersion;
   }
 
-  async getNpmPackageBadge(packageName: string) {
+  async getNpmPackageBadge(packageName: string, settings: BadgeSettings) {
     const version = await this.getNpmPackageLatestVersion(packageName);
 
-    // TODO: make this properties with parameters
+    const {
+      label = 'npm package',
+      color = 'green',
+      style = 'plastic',
+    } = settings;
+
+    const validStyles = [
+      'plastic',
+      'flat',
+      'flat-square',
+      'for-the-badge',
+      'social',
+    ];
+
+    const isValidStyle = validStyles.includes(style);
+
     const svg = makeBadge({
-      label: 'npm package',
-      message: version,
-      color: 'green',
-      style: 'for-the-badge',
+      label: !isValidStyle ? 'invalid' : label,
+      message: !isValidStyle ? 'style' : version,
+      color: !isValidStyle ? 'red' : color,
+      style: !isValidStyle ? 'plastic' : style,
     });
 
     return svg;
