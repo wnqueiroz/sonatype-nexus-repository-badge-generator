@@ -1,6 +1,6 @@
-import { makeBadge } from 'badge-maker';
 import { HttpService, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { makeBadge } from 'badge-maker';
 
 export type BadgeSettings = {
   label?: string;
