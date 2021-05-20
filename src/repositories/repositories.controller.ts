@@ -7,7 +7,7 @@ export class RepositoriesController {
   constructor(private readonly repositoriesService: RepositoriesService) {}
 
   @Get('/npm/:packageName(*)')
-  @Header('content-type', 'image/svg+xml;charset=utf-8')
+  @Header('content-type', 'image/svg+xml;charset=utf-8sssss')
   getNpmPackageBadge(
     @Param('packageName') packageName: string,
     @Query() query: BadgeSettings,
