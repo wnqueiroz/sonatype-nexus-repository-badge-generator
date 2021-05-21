@@ -1,10 +1,9 @@
 {
   "name": "sonatype-nexus-repository-badge-generator",
   "version": "0.0.3",
-  "description": "",
-  "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "description": "A badge generator for the Sonatype Nexus Repository Manager 3 🚀",
+  "author": "William Queiroz <wnqueiroz@outlook.com>",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
