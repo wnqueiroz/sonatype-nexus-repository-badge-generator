@@ -19,6 +19,7 @@
 <div align="center">
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style)](http://commitizen.github.io/cz-cli/)
+[![CI/CD](https://github.com/wnqueiroz/sonatype-nexus-repository-badge-generator/actions/workflows/ci-cd.yml/badge.svg?branch=main)](https://github.com/wnqueiroz/sonatype-nexus-repository-badge-generator/actions/workflows/ci-cd.yml)
 
 </div>
 
