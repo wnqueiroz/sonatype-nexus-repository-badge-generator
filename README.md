@@ -12,7 +12,15 @@
 </p>
 <h5 align="center">
   <i>inspired by <a href="https://shields.io/">shields.io</a></i> 🚀
+  <br/>
+  <br/>
 </h5>
+
+<div align="center">
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style)](http://commitizen.github.io/cz-cli/)
+
+</div>
 
 <p align="center">
   🚧 This project is <b>under development</b> 🚧
