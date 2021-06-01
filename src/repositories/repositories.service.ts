@@ -34,11 +34,11 @@ export class RepositoriesService {
         };
       });
 
-    const { 'dist-tags': distTags } = response;
+    const { 'dist-tags': distTags = {} } = response;
 
     const { latest = defaultVersion } = distTags;
 
-    return latest || defaultVersion;
+    return latest;
   }
 
   async getNpmPackageBadge(packageName: string, settings: BadgeSettings) {
