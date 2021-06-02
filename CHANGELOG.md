@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/wnqueiroz/sonatype-nexus-repository-badge-generator/compare/0.0.3...0.0.4) (2021-06-02)
+
+
+### Bug Fixes
+
+* **ci:** added Docker Buildx stage ([36ebf50](https://github.com/wnqueiroz/sonatype-nexus-repository-badge-generator/commit/36ebf50b5dc14c0944d876acd817fd950d28ea23))
+
 ### [0.0.3](https://github.com/wnqueiroz/sonatype-nexus-repository-badge-generator/compare/0.0.2...0.0.3) (2021-05-21)
 
 ### 0.0.2 (2021-05-20)
